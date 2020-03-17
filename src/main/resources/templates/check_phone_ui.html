@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>check_name_ui</title>
+</head>
+<body>
+
+
+<p>phone:<input value="10086"/></p>
+
+
+<p>
+    <button id="btn">校验</button>
+</p>
+
+<script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
+
+
+<script>
+    const btn = document.getElementById('btn');
+    const inputs = document.getElementsByTagName("input");
+
+    btn.onclick = () => {
+        axios.post('/api/checkPhone', {
+            phone: inputs[0].value,
+        })
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+</script>
+
+</body>
+</html>
