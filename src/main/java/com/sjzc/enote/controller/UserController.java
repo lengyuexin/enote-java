@@ -27,7 +27,7 @@ public class UserController {
     Object addUser(@RequestBody Map<String,Object> params) {
         try {
             String level="writer";
-            String sign="说点什么吧";
+            String sign=null;
             String avatar="/img/defaultAvatar.jpeg";
             String name=(String)params.get("name");
             String password=(String)params.get("password");
@@ -126,11 +126,64 @@ public class UserController {
 
     }
 
+    //用户个签修改 -- /api/updateSign
+
+    @CrossOrigin
+    @RequestMapping(value = "/api/updateSign")
+    @ResponseBody
+
+    Object updateSign(@RequestBody Map<String,String> map) {
+        try {
+            userRepository.updateSignByName(map.get("sign"),map.get("name"));
+            return  ResHelper.success("ok","更新成功");
+        }catch(Exception e){
+            System.out.println(e);
+            return ResHelper.fail("error",e.getMessage());
+
+        }
+
+    }
+
+
+    //用户手机号修改 -- /api/updatePhone
+
+    @CrossOrigin
+    @RequestMapping(value = "/api/updatePhone")
+    @ResponseBody
+
+    Object updatePhone(@RequestBody Map<String,String> map) {
+        try {
+            userRepository.updatePhoneByName(map.get("phone"),map.get("name"));
+            return  ResHelper.success("ok","更新成功");
+        }catch(Exception e){
+            System.out.println(e);
+            return ResHelper.fail("error",e.getMessage());
+
+        }
 
 
 
 
+    }
 
-}
+
+    //用户密码修改 -- /api/updatePwd
+
+    @CrossOrigin
+    @RequestMapping(value = "/api/updatePwd")
+    @ResponseBody
+
+    Object updatePwd(@RequestBody Map<String,String> map) {
+        try {
+            userRepository.updatePwdByName(map.get("password"), map.get("name"));
+            return ResHelper.success("ok", "更新成功");
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResHelper.fail("error", e.getMessage());
+
+        }
+
+
+    }}
 
 

@@ -24,4 +24,17 @@ public class UserTestController {
     @RequestMapping(value="/login_ui")
     public String loginUI() { return "login_ui"; }
 
+    @CrossOrigin
+    @RequestMapping(value="/update_sign_ui")
+    public String updateSignUI() { return "update_sign_ui"; }
+
+
+    @CrossOrigin
+    @RequestMapping(value="/update_phone_ui")
+    public String updatePhoneUI() { return "update_phone_ui"; }
+
+    @CrossOrigin
+    @RequestMapping(value="/update_pwd_ui")
+    public String updatePwdUI() { return "update_pwd_ui"; }
+
 }
