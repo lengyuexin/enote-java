@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>update_phone_ui</title>
+    <title>find_articles_by_author_ui</title>
 </head>
 <body>
 
 
-<p>name:<input value="tj"/></p>
-<p>phone:<input value="18231455555"/></p>
-
+<p>author:<input value="tj"/></p>
 
 
 <p>
-    <button id="btn">修改</button>
+    <button id="btn">查询</button>
 </p>
 
 <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
@@ -24,9 +22,8 @@
     const inputs = document.getElementsByTagName("input");
 
     btn.onclick = () => {
-        axios.post('/api/updatePhone', {
-            name: inputs[0].value,
-            phone: inputs[1].value,
+        axios.post('/api/findArticlesByAuthor', {
+            author: inputs[0].value,
         })
             .then(res => {
                 console.log(res.data);

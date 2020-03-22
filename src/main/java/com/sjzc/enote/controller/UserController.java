@@ -183,7 +183,26 @@ public class UserController {
 
         }
 
+    }
 
-    }}
+    //用户头像修改 -- /api/updateAvatar
+
+    @CrossOrigin
+    @RequestMapping(value = "/api/updateAvatar")
+    @ResponseBody
+
+    Object updateAvatar(@RequestBody Map<String,String> map) {
+        try {
+            userRepository.updateAvatarByName(map.get("avatar"), map.get("name"));
+            return ResHelper.success("ok", "更新成功");
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResHelper.fail("error", e.getMessage());
+
+        }
+
+    }
+
+}
 
 

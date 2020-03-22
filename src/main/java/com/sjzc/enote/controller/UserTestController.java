@@ -37,4 +37,8 @@ public class UserTestController {
     @RequestMapping(value="/update_pwd_ui")
     public String updatePwdUI() { return "update_pwd_ui"; }
 
+    @CrossOrigin
+    @RequestMapping(value="/update_avatar_ui")
+    public String updateAvatarUI() { return "update_avatar_ui"; }
+
 }

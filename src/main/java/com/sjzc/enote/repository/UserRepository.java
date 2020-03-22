@@ -42,6 +42,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "update users  set password=?1 where name=?2", nativeQuery = true)
     void updatePwdByName(@Param("password") String password, @Param("name") String name);
 
+    //更新用户头像
+
+    @Transactional(rollbackFor = Exception.class)
+    @Modifying
+    @Query(value = "update users  set avatar=?1 where name=?2", nativeQuery = true)
+    void updateAvatarByName(@Param("avatar") String avatar, @Param("name") String name);
+
 
 
 }
